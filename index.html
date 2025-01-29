@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Автоферма</title>
+    <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/achievement.css">
+    <link rel="stylesheet" href="css/contacts.css">
+    <script src="js/skills-carousel.js"></script>
+    <script src="js/contact-form.js"></script>
+    <script src="js/achievement.js"></script>
+    <script src="js/home.js"></script>
     <style>
         * {
             margin: 0;
@@ -13,57 +21,9 @@
 
         body {
             font-family: Arial, sans-serif;
+            background: rgb(0, 0, 0);
             scroll-behavior: smooth;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-
-        header.shrink {
-            padding: 5px 20px;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        header .logo {
-            position: absolute;
-            left: 20px;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ff9800;
+            background: url('images/body копия.jpg') center/cover no-repeat;
         }
 
         section {
@@ -72,7 +32,7 @@
         }
 
         #home {
-            background: url('your-image.jpg') center/cover no-repeat;
+            background: url('images/close-up-car-care-process копия.jpg') center/cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -90,14 +50,13 @@
             font-size: 18px;
             background: #ff9800;
             border: none;
-            border-radius: 5px;
             color: white;
             cursor: pointer;
             transition: background 0.3s;
         }
 
         #home button:hover {
-            background: #e68900;
+            background: #652b2b;
         }
 
         .form-popup {
@@ -105,19 +64,21 @@
             position: fixed;
             top: 50%;
             left: 50%;
+            width: 20%;
             transform: translate(-50%, -50%);
-            background: white;
+            background: rgba(0, 0, 0, 0.73);
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(196, 196, 196, 0.3);
             z-index: 2000;
         }
 
         .form-popup input, .form-popup textarea {
             width: 100%;
             margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border: 0px solid rgba(44, 44, 44, 0.5);
+            background: rgba(159, 159, 159, 0.5);
+            padding: 20px;
+            color: #ffffff;
         }
 
         .form-popup button {
@@ -125,65 +86,11 @@
             border: none;
             background: #ff9800;
             color: white;
-            border-radius: 5px;
             cursor: pointer;
         }
 
         #achievements, #contacts {
             text-align: center;
-        }
-
-        #skills {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            overflow: hidden;
-            position: relative;
-            background: #f1f1f1;
-        }
-
-        .skills-left, .skills-right {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .skills-carousel {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            position: relative;
-        }
-
-        .skill-item {
-            width: 300px;
-            padding: 20px;
-            background: #ffffff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.5s ease;
-        }
-
-        .skill-item.active {
-            transform: scale(1.2);
-        }
-
-        .skill-text {
-            font-size: 18px;
-            color: #333;
-            max-width: 300px;
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .skill-text.visible {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         footer {
@@ -193,14 +100,6 @@
         }
 
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            header nav {
-                margin-top: 10px;
-            }
 
             #home h1 {
                 font-size: 30px;
@@ -210,20 +109,9 @@
                 font-size: 16px;
             }
 
-            .skill-item {
-                width: 250px;
-            }
         }
 
         @media (max-width: 480px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul li {
-                margin: 5px 0;
-            }
 
             #home h1 {
                 font-size: 24px;
@@ -238,100 +126,19 @@
                 padding: 15px;
             }
 
-            .skill-text {
-                font-size: 16px;
-            }
         }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const header = document.querySelector("header");
-            const form = document.querySelector(".form-popup");
-            const navLinks = document.querySelectorAll("nav ul li a");
-
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 50) {
-                    header.classList.add("shrink");
-                } else {
-                    header.classList.remove("shrink");
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    const target = document.querySelector(link.getAttribute("href"));
-                    target.scrollIntoView({ behavior: "smooth" });
-                });
-            });
-
-            document.querySelector("#order-btn").addEventListener("click", () => {
-                form.style.display = "block";
-            });
-
-            document.querySelector("#close-form").addEventListener("click", () => {
-                form.style.display = "none";
-            });
-
-            document.querySelector("#order-form").addEventListener("submit", (e) => {
-                e.preventDefault();
-                const formData = new FormData(e.target);
-                fetch("https://your-telegram-bot-url", {
-                    method: "POST",
-                    body: formData,
-                }).then(() => {
-                    alert("Заявка отправлена!");
-                    form.style.display = "none";
-                });
-            });
-
-            // Vertical Carousel functionality
-            const carousel = document.querySelector(".skills-carousel");
-            const items = document.querySelectorAll(".skill-item");
-            const skillText = document.querySelector(".skills-right .skill-text");
-
-            const descriptions = [
-                "Мы подберем идеальный новый автомобиль для вас.",
-                "Покрасим ваш автомобиль под ключ, качественно и быстро.",
-                "Проверим автомобиль по всем базам для вашей уверенности.",
-                "Оценим ваш автомобиль перед продажей с максимальной точностью."
-            ];
-
-            let currentIndex = 0;
-
-            function updateCarousel() {
-                items.forEach((item, index) => {
-                    item.classList.remove("active");
-                    if (index === currentIndex) {
-                        item.classList.add("active");
-                    }
-                });
-
-                skillText.classList.remove("visible");
-                setTimeout(() => {
-                    skillText.textContent = descriptions[currentIndex];
-                    skillText.classList.add("visible");
-                }, 500);
-            }
-
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % items.length;
-                updateCarousel();
-            }, 3000);
-
-            updateCarousel();
-        });
-    </script>
 </head>
 <body>
 <header>
     <div class="logo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">Автоферма</div>
+    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
     <nav>
         <ul>
-            <li><a href="#home">Главная</a></li>
-            <li><a href="#achievements">Главные достижения</a></li>
-            <li><a href="#skills">Что мы умеем</a></li>
-            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="#home" onclick="closeMenu()">Главная</a></li>
+            <li><a href="#achievements" onclick="closeMenu()">Главные достижения</a></li>
+            <li><a href="#skills" onclick="closeMenu()">Что мы умеем</a></li>
+            <li><a href="#contacts" onclick="closeMenu()">Контакты</a></li>
         </ul>
     </nav>
 </header>
@@ -339,41 +146,125 @@
 <section id="home">
     <div>
         <h1>Автоферма</h1>
-        <button id="order-btn">Заказать</button>
+        <button id="order-btn">Задать вопрос</button>
     </div>
 </section>
-
-<section id="achievements">
-    <h2>Главные достижения</h2>
-    <p>11 лет успешной работы</p>
-    <p>139 319 автомобилей сделано</p>
-    <p>92 402 человек воспользовались нашими услугами</p>
-</section>
-
-<section id="skills">
-    <div class="skills-left">
-        <div class="skills-carousel">
-            <div class="skill-item">Подбор нового автомобиля</div>
-            <div class="skill-item">Покраска под ключ</div>
-            <div class="skill-item">Проверка по базам</div>
-            <div class="skill-item">Предпродажная оценка</div>
+<!--icons/cars/-->
+<section id="achievements" class="achievements-container">
+    <h2 class="achievements-title">Главные достижения</h2>
+    <div class="achievements-content">
+        <div class="achievement-row">
+            <div class="achievement-block left-block">
+                <img src="icons/cars/img1.png" alt="Фото 1" class="achievement-image-left">
+                <div class="achievement-text">
+                    <p class="achievement-title">11 лет успешной работы</p>
+                    <p class="achievement-details">Мы предоставляем высококачественные услуги более десяти лет, заслужив доверие тысяч клиентов.</p>
+                    <p class="achievement-details">За это время мы расширили спектр услуг, внедрили новые технологии и улучшили клиентский сервис.</p>
+                    <p class="achievement-details">Мы гордимся своей репутацией и стремимся к постоянному развитию.</p>
+                </div>
+            </div>
+            <div class="achievement-block right-block">
+                <img src="icons/cars/img2.png" alt="Фото 2" class="achievement-image-right">
+                <div class="achievement-text">
+                    <p class="achievement-title">139 319 автомобилей сделано</p>
+                    <p class="achievement-details">Каждый автомобиль проходит тщательный контроль качества, гарантируя надежность и безопасность.</p>
+                    <p class="achievement-details">Мы используем только сертифицированные запчасти и работаем по международным стандартам.</p>
+                    <p class="achievement-details">Наши специалисты имеют многолетний опыт и высокую квалификацию.</p>
+                </div>
+            </div>
+        </div>
+        <div class="achievement-row">
+            <div class="achievement-block left-block">
+                <img src="icons/cars/img3.png" alt="Фото 3" class="achievement-image-left">
+                <div class="achievement-text">
+                    <p class="achievement-title">92 402 человек воспользовались нашими услугами</p>
+                    <p class="achievement-details">Наши клиенты ценят нас за скорость, качество и профессионализм.</p>
+                    <p class="achievement-details">Мы предлагаем гибкие условия сотрудничества и индивидуальный подход.</p>
+                    <p class="achievement-details">Каждый клиент получает гарантию на выполненные работы.</p>
+                </div>
+            </div>
+            <div class="achievement-block right-block">
+                <div class="achievement-text">
+                    <p class="achievement-title">Более 500 партнеров</p>
+                    <p class="achievement-details">Мы сотрудничаем с ведущими автоцентрами и дилерами по всей стране.</p>
+                    <p class="achievement-details">Наши партнеры доверяют нам, потому что мы всегда выполняем обязательства в срок.</p>
+                    <p class="achievement-details">Мы расширяем сеть партнеров и открываем новые горизонты сотрудничества.</p>
+                </div>
+                <img src="icons/cars/img4.png" alt="Фото 4" class="achievement-image-right">
+            </div>
+        </div>
+        <div class="achievement-row">
+            <div class="achievement-block left-block">
+                <img src="icons/cars/img5.png" alt="Фото 5" class="achievement-image-left">
+                <div class="achievement-text">
+                    <p class="achievement-title">Сервис в 10 городах</p>
+                    <p class="achievement-details">Наши сервисные центры расположены в крупнейших городах, обеспечивая удобство для клиентов.</p>
+                    <p class="achievement-details">Мы создаем комфортные условия для обслуживания и ремонта автомобилей.</p>
+                    <p class="achievement-details">В планах дальнейшее расширение сети для лучшего покрытия региона.</p>
+                </div>
+            </div>
+            <div class="achievement-block right-block">
+                <div class="achievement-text">
+                    <p class="achievement-title">Оценка авто за 30 минут</p>
+                    <p class="achievement-details">Быстрая и точная оценка стоимости автомобиля без лишних ожиданий.</p>
+                    <p class="achievement-details">Наши специалисты используют современное оборудование для диагностики.</p>
+                    <p class="achievement-details">Мы предлагаем лучшие условия на рынке для наших клиентов.</p>
+                </div>
+                <img src="icons/cars/img6.png" alt="Фото 6" class="achievement-image-right">
+            </div>
         </div>
     </div>
-    <div class="skills-right">
-        <p class="skill-text"></p>
+</section>
+
+
+<section id="skills">
+    <h2 class="section-title">Что мы умеем</h2>
+    <div class="skills-main">
+        <div class="skills-left">
+            <div class="skills-carousel">
+                <div class="skill-item">Подбор нового автомобиля</div>
+                <div class="skill-item">Покраска под ключ</div>
+                <div class="skill-item">Проверка по базам</div>
+                <div class="skill-item">Предпродажная оценка</div>
+            </div>
+        </div>
+        <div class="skills-right">
+            <p class="skill-text"></p>
+        </div>
     </div>
 </section>
 
-<section id="contacts">
-    <h2>Контактная информация</h2>
-    <p>Телефон: +7 (123) 456-78-90</p>
-    <p>Email: info@autoferma.ru</p>
-    <p>Адрес: г. Москва, ул. Примерная, д. 1</p>
+<section id="contacts" class="contacts-container">
+    <h2 class="contacts-title">Контакты</h2>
+    <div class="contacts-content">
+        <div class="contacts-left">
+            <div class="map-container">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aexample&source=constructor" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="contacts-right">
+            <div class="contact-info">
+                <h3>Где мы находимся</h3>
+                <p>г. Минск, ул. Примерная, 10</p>
+                <br>
+                <h3>Контакты</h3>
+                <p>+375(33)333-33-33</p>
+                <br>
+                <h3>Время работы</h3>
+                <p>Будни, с 8:00 до 18:00</p>
+            </div>
+            <form id="contact-form" class="contact-form">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Ваш телефон" required>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
 </section>
+
 
 <div class="form-popup">
     <form id="order-form">
-        <h3>Заполните форму</h3>
         <input type="text" name="name" placeholder="Ваше имя" required>
         <input type="text" name="phone" placeholder="Ваш телефон" required>
         <textarea name="message" placeholder="Ваше сообщение" required></textarea>
