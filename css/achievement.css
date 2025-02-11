@@ -27,7 +27,7 @@
     justify-content: center;
     gap: 20px;
     width: 100%;
-    color: #cccccc;
+    color: #e63946;
 }
 
 .achievement-block {
@@ -102,5 +102,8 @@
     .achievement-text {
         width: 100%;
         text-align: center;
+    }
+    .achievement-block {
+        border-radius: 10px;
     }
 }

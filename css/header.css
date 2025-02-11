@@ -55,7 +55,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff9800;
+    color: #e63946;
 }
 
 @media (max-width: 768px) {

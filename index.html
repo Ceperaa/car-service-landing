@@ -8,10 +8,46 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/achievement.css">
     <link rel="stylesheet" href="css/contacts.css">
+    <link rel="stylesheet" href="css/form.css">
     <script src="js/skills-carousel.js"></script>
+    <script src="js/skills.js"></script>
     <script src="js/contact-form.js"></script>
     <script src="js/achievement.js"></script>
     <script src="js/home.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+    <script>
+        ymaps.ready(initMap);
+
+        function initMap() {
+            var map = new ymaps.Map("map", {
+                center: [53.9006, 27.5590], // Координаты Минска по умолчанию
+                zoom: 15
+            });
+
+            // Маркер автосервиса
+            var autoServicePlacemark = new ymaps.Placemark([53.9006, 27.5590], {
+                balloonContent: "<strong>Автоферма</strong><br>ул. Примерная, 10"
+            }, {
+                preset: "islands#redAutoIcon"
+            });
+
+            map.geoObjects.add(autoServicePlacemark);
+
+            // Определение местоположения пользователя
+            ymaps.geolocation.get().then(function (res) {
+                var userCoords = res.geoObjects.position;
+
+                var userPlacemark = new ymaps.Placemark(userCoords, {
+                    balloonContent: "Вы находитесь здесь"
+                }, {
+                    preset: "islands#blueCircleDotIcon"
+                });
+
+                map.geoObjects.add(userPlacemark);
+                map.setCenter(userCoords, 14); // Центрируем карту на пользователе
+            });
+        }
+    </script>
     <style>
         * {
             margin: 0;
@@ -48,7 +84,7 @@
         #home button {
             padding: 10px 20px;
             font-size: 18px;
-            background: #ff9800;
+            background: #e63946;
             border: none;
             color: white;
             cursor: pointer;
@@ -59,35 +95,6 @@
             background: #652b2b;
         }
 
-        .form-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 20%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.73);
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(196, 196, 196, 0.3);
-            z-index: 2000;
-        }
-
-        .form-popup input, .form-popup textarea {
-            width: 100%;
-            margin-bottom: 10px;
-            border: 0px solid rgba(44, 44, 44, 0.5);
-            background: rgba(159, 159, 159, 0.5);
-            padding: 20px;
-            color: #ffffff;
-        }
-
-        .form-popup button {
-            padding: 10px 20px;
-            border: none;
-            background: #ff9800;
-            color: white;
-            cursor: pointer;
-        }
 
         #achievements, #contacts {
             text-align: center;
@@ -107,6 +114,7 @@
 
             #home button {
                 font-size: 16px;
+                border-radius: 10px;
             }
 
         }
@@ -136,8 +144,8 @@
     <nav>
         <ul>
             <li><a href="#home" onclick="closeMenu()">Главная</a></li>
-            <li><a href="#achievements" onclick="closeMenu()">Главные достижения</a></li>
-            <li><a href="#skills" onclick="closeMenu()">Что мы умеем</a></li>
+            <li><a href="#achievements" onclick="closeMenu()">Что мы умеем</a></li>
+            <li><a href="#skills" onclick="closeMenu()">Главные достижения</a></li>
             <li><a href="#contacts" onclick="closeMenu()">Контакты</a></li>
         </ul>
     </nav>
@@ -146,49 +154,60 @@
 <section id="home">
     <div>
         <h1>Автоферма</h1>
-        <button id="order-btn">Задать вопрос</button>
+        <button id="order-btn">Оставь заявку</button>
     </div>
 </section>
+
+<div class="form-popup">
+    <form id="order-form">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="text" name="phone" placeholder="Ваш телефон" required>
+        <textarea name="message" placeholder="Ваше вопрос" required></textarea>
+        <button type="submit">Оставить заявку</button>
+        <button type="button" id="close-form">Отмена</button>
+    </form>
+</div>
+<!--icons/cars/-->
 <!--icons/cars/-->
 <section id="achievements" class="achievements-container">
-    <h2 class="achievements-title">Главные достижения</h2>
+    <h2 class="achievements-title">Что мы умеем</h2>
     <div class="achievements-content">
         <div class="achievement-row">
             <div class="achievement-block left-block">
                 <img src="icons/cars/img1.png" alt="Фото 1" class="achievement-image-left">
                 <div class="achievement-text">
-                    <p class="achievement-title">11 лет успешной работы</p>
-                    <p class="achievement-details">Мы предоставляем высококачественные услуги более десяти лет, заслужив доверие тысяч клиентов.</p>
-                    <p class="achievement-details">За это время мы расширили спектр услуг, внедрили новые технологии и улучшили клиентский сервис.</p>
-                    <p class="achievement-details">Мы гордимся своей репутацией и стремимся к постоянному развитию.</p>
+                    <p class="achievement-title">Кузовной ремонт любой сложности</p>
+                    <p class="achievement-details">Восстанавливаем геометрию кузова, устраняем вмятины, ржавчину и повреждения.</p>
+                    <p class="achievement-details">Работаем с легковыми авто и коммерческим транспортом.</p>
+                    <p class="achievement-details">Используем современные технологии рихтовки и восстановления.</p>
                 </div>
             </div>
             <div class="achievement-block right-block">
-                <img src="icons/cars/img2.png" alt="Фото 2" class="achievement-image-right">
                 <div class="achievement-text">
-                    <p class="achievement-title">139 319 автомобилей сделано</p>
-                    <p class="achievement-details">Каждый автомобиль проходит тщательный контроль качества, гарантируя надежность и безопасность.</p>
-                    <p class="achievement-details">Мы используем только сертифицированные запчасти и работаем по международным стандартам.</p>
-                    <p class="achievement-details">Наши специалисты имеют многолетний опыт и высокую квалификацию.</p>
+                    <p class="achievement-title">Профессиональная покраска</p>
+                    <p class="achievement-details">Используем качественные материалы и технологии окрашивания.</p>
+                    <p class="achievement-details">Полное и частичное окрашивание, подбор цвета по VIN-коду.</p>
+                    <p class="achievement-details">Гарантия стойкости покрытия и защиты от коррозии.</p>
                 </div>
+                <img src="icons/cars/img2.png" alt="Фото 2" class="achievement-image-right">
             </div>
         </div>
         <div class="achievement-row">
             <div class="achievement-block left-block">
                 <img src="icons/cars/img3.png" alt="Фото 3" class="achievement-image-left">
                 <div class="achievement-text">
-                    <p class="achievement-title">92 402 человек воспользовались нашими услугами</p>
-                    <p class="achievement-details">Наши клиенты ценят нас за скорость, качество и профессионализм.</p>
-                    <p class="achievement-details">Мы предлагаем гибкие условия сотрудничества и индивидуальный подход.</p>
-                    <p class="achievement-details">Каждый клиент получает гарантию на выполненные работы.</p>
+                    <p class="achievement-title">Полировка и восстановление ЛКП</p>
+                    <p class="achievement-details">Удаление царапин, матовости и потертостей.</p>
+                    <p class="achievement-details">Керамическое покрытие для защиты лакокрасочного слоя.</p>
+                    <p class="achievement-details">Детейлинг и обработка кузова защитными составами.</p>
                 </div>
             </div>
             <div class="achievement-block right-block">
                 <div class="achievement-text">
-                    <p class="achievement-title">Более 500 партнеров</p>
-                    <p class="achievement-details">Мы сотрудничаем с ведущими автоцентрами и дилерами по всей стране.</p>
-                    <p class="achievement-details">Наши партнеры доверяют нам, потому что мы всегда выполняем обязательства в срок.</p>
-                    <p class="achievement-details">Мы расширяем сеть партнеров и открываем новые горизонты сотрудничества.</p>
+                    <p class="achievement-title">Шумоизоляция и антикор</p>
+                    <p class="achievement-details">Защищаем авто от ржавчины и продлеваем срок службы кузова.</p>
+                    <p class="achievement-details">Полная или частичная шумоизоляция для комфортной езды.</p>
+                    <p class="achievement-details">Используем материалы премиум-класса.</p>
                 </div>
                 <img src="icons/cars/img4.png" alt="Фото 4" class="achievement-image-right">
             </div>
@@ -197,18 +216,18 @@
             <div class="achievement-block left-block">
                 <img src="icons/cars/img5.png" alt="Фото 5" class="achievement-image-left">
                 <div class="achievement-text">
-                    <p class="achievement-title">Сервис в 10 городах</p>
-                    <p class="achievement-details">Наши сервисные центры расположены в крупнейших городах, обеспечивая удобство для клиентов.</p>
-                    <p class="achievement-details">Мы создаем комфортные условия для обслуживания и ремонта автомобилей.</p>
-                    <p class="achievement-details">В планах дальнейшее расширение сети для лучшего покрытия региона.</p>
+                    <p class="achievement-title">Доставка авто из США</p>
+                    <p class="achievement-details">Полный цикл покупки, доставки и оформления автомобилей.</p>
+                    <p class="achievement-details">Проверка авто перед покупкой, подбор оптимального варианта.</p>
+                    <p class="achievement-details">Растаможка, сертификация и постановка на учет.</p>
                 </div>
             </div>
             <div class="achievement-block right-block">
                 <div class="achievement-text">
-                    <p class="achievement-title">Оценка авто за 30 минут</p>
-                    <p class="achievement-details">Быстрая и точная оценка стоимости автомобиля без лишних ожиданий.</p>
-                    <p class="achievement-details">Наши специалисты используют современное оборудование для диагностики.</p>
-                    <p class="achievement-details">Мы предлагаем лучшие условия на рынке для наших клиентов.</p>
+                    <p class="achievement-title">Ремонт после ДТП</p>
+                    <p class="achievement-details">Комплексное восстановление автомобиля после аварий.</p>
+                    <p class="achievement-details">Замена стекол, бамперов, фар и кузовных элементов.</p>
+                    <p class="achievement-details">Согласование ремонта со страховыми компаниями.</p>
                 </div>
                 <img src="icons/cars/img6.png" alt="Фото 6" class="achievement-image-right">
             </div>
@@ -216,20 +235,24 @@
     </div>
 </section>
 
-
 <section id="skills">
-    <h2 class="section-title">Что мы умеем</h2>
-    <div class="skills-main">
-        <div class="skills-left">
-            <div class="skills-carousel">
-                <div class="skill-item">Подбор нового автомобиля</div>
-                <div class="skill-item">Покраска под ключ</div>
-                <div class="skill-item">Проверка по базам</div>
-                <div class="skill-item">Предпродажная оценка</div>
-            </div>
+    <h2 class="section-title">Главные достижения</h2>
+    <div class="skills-container">
+        <div class="skill-block">
+            <h3>11+</h3>
+            <p>Лет опыта в кузовном ремонте</p>
         </div>
-        <div class="skills-right">
-            <p class="skill-text"></p>
+        <div class="skill-block">
+            <h3>140 000+</h3>
+            <p>Отремонтированных автомобилей</p>
+        </div>
+        <div class="skill-block">
+            <h3>92 000+</h3>
+            <p>Довольных клиентов</p>
+        </div>
+        <div class="skill-block">
+            <h3>500+</h3>
+            <p>Партнеров по всей стране</p>
         </div>
     </div>
 </section>
@@ -239,7 +262,7 @@
     <div class="contacts-content">
         <div class="contacts-left">
             <div class="map-container">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aexample&source=constructor" frameborder="0" allowfullscreen></iframe>
+                <div id="map"></div>
             </div>
         </div>
         <div class="contacts-right">
@@ -248,7 +271,9 @@
                 <p>г. Минск, ул. Примерная, 10</p>
                 <br>
                 <h3>Контакты</h3>
-                <p>+375(33)333-33-33</p>
+                <p>
+                    <a href="tel:+375333333333" class="phone-link">+375(33) 333-33-33</a>
+                </p>
                 <br>
                 <h3>Время работы</h3>
                 <p>Будни, с 8:00 до 18:00</p>
@@ -256,22 +281,11 @@
             <form id="contact-form" class="contact-form">
                 <input type="text" name="name" placeholder="Ваше имя" required>
                 <input type="email" name="email" placeholder="Ваш телефон" required>
-                <button type="submit">Отправить</button>
+                <button type="submit">Оставить заявку</button>
             </form>
         </div>
     </div>
 </section>
-
-
-<div class="form-popup">
-    <form id="order-form">
-        <input type="text" name="name" placeholder="Ваше имя" required>
-        <input type="text" name="phone" placeholder="Ваш телефон" required>
-        <textarea name="message" placeholder="Ваше сообщение" required></textarea>
-        <button type="submit">Отправить</button>
-        <button type="button" id="close-form">Закрыть</button>
-    </form>
-</div>
 
 <footer>
     &copy; 2025 Автоферма

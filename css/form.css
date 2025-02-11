@@ -1,0 +1,94 @@
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 30%; /* Для десктопов */
+    max-width: 400px; /* Ограничение ширины */
+    min-width: 280px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(196, 196, 196, 0.3);
+    z-index: 2000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Показываем форму */
+.form-popup.show {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Поля ввода */
+.form-popup input,
+.form-popup textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border: none;
+    background: rgba(159, 159, 159, 0.5);
+    padding: 12px;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+/* Убираем стандартный стиль поля */
+.form-popup input:focus,
+.form-popup textarea:focus {
+    outline: none;
+    background: rgba(200, 200, 200, 0.7);
+}
+
+/* Кнопки */
+.form-popup button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+/* Кнопка отправки */
+.form-popup button[type="submit"] {
+    background: #e63946;
+    color: white;
+}
+
+.form-popup button[type="submit"]:hover {
+    background: #9a252d;
+}
+
+/* Кнопка закрытия */
+#close-form {
+    background: #444;
+    color: white;
+}
+
+#close-form:hover {
+    background: #222;
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .form-popup {
+        width: 90%; /* Ширина формы для мобильных */
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .form-popup input,
+    .form-popup textarea {
+        font-size: 0.9rem;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .form-popup button {
+        font-size: 0.9rem;
+        padding: 10px;
+        border-radius: 10px;
+    }
+}
