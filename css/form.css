@@ -8,6 +8,7 @@
     min-width: 280px;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.85);
+    border: none;
     padding: 20px;
     box-shadow: 0 5px 15px rgba(196, 196, 196, 0.3);
     z-index: 2000;

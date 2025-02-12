@@ -6,7 +6,7 @@
     padding: 50px 20px;
     width: 100%;
     overflow: hidden;
-    color: #cccccc;
+    color: #ffffff;
 }
 
 .achievements-title {
@@ -28,6 +28,7 @@
     gap: 20px;
     width: 100%;
     color: #e63946;
+    flex-wrap: wrap;
 }
 
 .achievement-block {
@@ -41,6 +42,7 @@
     min-height: 180px;
     opacity: 0;
     padding: 15px;
+    gap: 15px; /* Расстояние между изображением и текстом */
 }
 
 .achievement-block.left-block {
@@ -61,22 +63,22 @@
     background-color: #212121;
 }
 
-.achievement-image-left {
-    width: 10%;
-    height: 100%;
-    object-fit: cover;
+/* Улучшенная адаптация изображений */
+.achievement-image-left, .achievement-image-right {
+    width: 150px;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain; /* Чтобы изображение не обрезалось */
+    flex-shrink: 0;
 }
 
 .achievement-image-right {
-    width: 10%;
-    height: 100%;
-    object-fit: cover;
     margin-left: auto;
     display: block;
 }
 
 .achievement-text {
-    width: 50%;
+    width: 60%;
     padding: 10px;
     text-align: left;
 }
@@ -92,18 +94,43 @@
     color: #aaaaaa;
 }
 
-@media (max-width: 768px) {
-    .achievements-content {
-        flex-direction: column;
-    }
-    .achievement-row {
-        flex-direction: column;
-    }
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
     .achievement-text {
-        width: 100%;
-        text-align: center;
+        width: 70%;
     }
-    .achievement-block {
-        border-radius: 10px;
+    .achievement-image-left, .achievement-image-right {
+        /*width: 120px;*/
+        /*max-height: 120px;*/
+        display: none;
     }
 }
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .achievement-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .achievement-block {
+        flex-direction: row; /* Оставляем изображение сбоку */
+        justify-content: center;
+        text-align: left;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 10px;
+    }
+
+    .achievement-text {
+        width: 100%;
+        text-align: left;
+    }
+
+    .achievement-image-left, .achievement-image-right {
+        /*width: 100px; !* Немного уменьшаем размер на мобильных *!*/
+        /*max-height: 100px;*/
+        display: none;
+    }
+}
+
