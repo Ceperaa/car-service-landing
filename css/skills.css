@@ -7,8 +7,9 @@
 }
 
 .section-title {
-    font-size: 28px;
-    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 /* Контейнер для достижений */
@@ -17,7 +18,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 60px; /* Расстояние между блоками */
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -58,6 +59,61 @@
     transform: scale(1.2);
 }
 
+/* Контейнер для карусели */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    /*background: rgba(0, 0, 0, 0.61)*/
+    padding-top: 20px ;
+    margin-top: 50px;
+}
+
+/* Лента карусели */
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    animation: scroll 20s linear infinite;
+    width: calc(250px * 8); /* 4 картинки + дублируем для бесконечного эффекта */
+}
+
+/* Элементы карусели */
+.carousel-item {
+    min-width: 400px;
+    height: 400px;
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.carousel-item:hover {
+    transform: scale(1.2);
+}
+
+/* Подписи к фото */
+.carousel-item p {
+    color: #ddd;
+    font-size: 14px;
+    padding: 20px ;
+}
+
+/* Анимация бесконечного движения карусели */
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-40%);
+    }
+}
+
+
 /* Адаптация под планшеты */
 @media (max-width: 1024px) {
     .skills-container {
@@ -71,6 +127,20 @@
     }
     .skill-block:hover {
         transform: scale(1.2);
+    }
+
+    .carousel-item {
+        min-width: 200px;
+        height: 160px;
+    }
+
+    .carousel-item img {
+        height: 130px;
+    }
+
+    .carousel-item p {
+        display: none;
+
     }
 }
 
@@ -89,6 +159,20 @@
     }
     .skill-block:hover {
         transform: scale(1.2);
+    }
+    .carousel-item {
+        min-width: 200px;
+        height: 160px;
+        border-radius: 10px;
+    }
+
+    .carousel-item img {
+        height: 130px;
+        border-radius: 10px;
+    }
+
+    .carousel-item p {
+        display: none;
     }
 }
 
