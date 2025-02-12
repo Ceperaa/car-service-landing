@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const header = document.querySelector("header");
-    const form = document.querySelector(".form-popup");
     const navLinks = document.querySelectorAll("nav ul li a");
 
     window.addEventListener("scroll", () => {
@@ -19,26 +18,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    document.querySelector("#order-btn").addEventListener("click", () => {
-        form.style.display = "block";
-    });
 
-    document.querySelector("#close-form").addEventListener("click", () => {
-        form.style.display = "none";
-    });
-
-    document.querySelector("#order-form").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        fetch("https://your-telegram-bot-url", {
-            method: "POST",
-            body: formData,
-        }).then(() => {
-            alert("Заявка отправлена!");
-            form.style.display = "none";
-        });
-    });
 });
+
+// анимация переходов между разделами
 function toggleMenu() {
     document.querySelector('nav').classList.toggle('show');
 }
@@ -47,7 +30,7 @@ function closeMenu() {
     document.querySelector('nav').classList.remove('show');
 }
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     let menu = document.querySelector('nav');
     let toggle = document.querySelector('.menu-toggle');
     if (!menu.contains(event.target) && !toggle.contains(event.target)) {

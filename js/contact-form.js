@@ -1,14 +1,3 @@
-// document.getElementById("contact-form").addEventListener("submit", function(event) {
-//     event.preventDefault();
-//     const formData = new FormData(this);
-//     fetch("https://your-telegram-bot-url", {
-//         method: "POST",
-//         body: formData,
-//     }).then(() => {
-//         alert("Сообщение отправлено!");
-//     });
-// });
-
 document.getElementById("contact-form").addEventListener("submit", function (e) {
     e.preventDefault();
     const formData = new FormData(this);

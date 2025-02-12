@@ -52,13 +52,30 @@
     transition: background 0.3s;
 }
 
+/* Стили для уведомления */
+.success-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 3000;
+}
+
 /* Кнопка отправки */
-.form-popup button[type="submit"] {
+.form-popup button {
     background: #e63946;
     color: white;
 }
 
-.form-popup button[type="submit"]:hover {
+.form-popup button:hover {
     background: #9a252d;
 }
 
@@ -91,5 +108,10 @@
         font-size: 0.9rem;
         padding: 10px;
         border-radius: 10px;
+    }
+
+    .success-message {
+        border-radius: 10px;
+        font-size: 0.9rem;
     }
 }

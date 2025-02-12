@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Автоферма</title>
     <link rel="stylesheet" href="css/skills.css">
     <link rel="stylesheet" href="css/header.css">
@@ -14,25 +14,23 @@
     <script src="js/contact-form.js"></script>
     <script src="js/achievement.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/form.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+
     <script>
         ymaps.ready(initMap);
-
         function initMap() {
             var map = new ymaps.Map("map", {
-                center: [52.398347, 31.143782], // Координаты Минска по умолчанию
+                center: [52.398347, 31.143782], // Координаты
                 zoom: 13
             });
-
             // Маркер автосервиса
             var autoServicePlacemark = new ymaps.Placemark([52.398347, 31.143782], {
                 balloonContent: "<strong>Автоферма</strong><br>ул. Улуковский сельсовет, 30"
             }, {
                 preset: "islands#redAutoIcon"
             });
-
             map.geoObjects.add(autoServicePlacemark);
-
             // Определение местоположения пользователя
             ymaps.geolocation.get().then(function (res) {
                 var userCoords = res.geoObjects.position;
@@ -42,11 +40,11 @@
                 }, {
                     preset: "islands#blueCircleDotIcon"
                 });
-
                 map.geoObjects.add(userPlacemark);
                 map.setCenter(userCoords, 14); // Центрируем карту на пользователе
             });
         }
+
     </script>
     <style>
         * {
@@ -59,7 +57,7 @@
             font-family: Arial, sans-serif;
             background: rgb(0, 0, 0);
             scroll-behavior: smooth;
-            background: url('images/body-восстановлено.jpg') center/cover no-repeat;
+            background: url('images/background.jpg') center/cover no-repeat;
         }
 
         section {
@@ -68,7 +66,7 @@
         }
 
         #home {
-            background: url('images/close-up-car-care-process-восстановлено.jpg') center/cover no-repeat;
+            background: url('images/face.jpg') center/cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -144,8 +142,8 @@
     <nav>
         <ul>
             <li><a href="#home" onclick="closeMenu()">Главная</a></li>
-            <li><a href="#achievements" onclick="closeMenu()">Что мы умеем</a></li>
             <li><a href="#skills" onclick="closeMenu()">Главные достижения</a></li>
+            <li><a href="#achievements" onclick="closeMenu()">Что мы умеем</a></li>
             <li><a href="#contacts" onclick="closeMenu()">Контакты</a></li>
         </ul>
     </nav>
@@ -160,80 +158,16 @@
 
 <div class="form-popup">
     <form id="order-form">
-        <input type="text" name="name" placeholder="Ваше имя" required>
-        <input type="text" name="phone" placeholder="Ваш телефон" required>
-        <textarea name="message" placeholder="Ваше вопрос" required></textarea>
-        <button type="submit">Подтвердить</button>
+        <input type="text" name="name" id="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" id="phone" placeholder="Ваш телефон" required>
+        <textarea name="message" id="message" placeholder="Ваше вопрос" required></textarea>
+        <button onclick="sendMessageToTelegram()">Подтвердить</button>
         <button type="button" id="close-form">Отмена</button>
     </form>
 </div>
-<!--icons/cars/-->
-<!--icons/cars/-->
-<section id="achievements" class="achievements-container">
-    <h2 class="achievements-title">Что мы умеем</h2>
-    <div class="achievements-content">
-        <div class="achievement-row">
-            <div class="achievement-block left-block">
-                <img src="icons/cars/img1.png" alt="Фото 1" class="achievement-image-left">
-                <div class="achievement-text">
-                    <p class="achievement-title">Кузовной ремонт любой сложности</p>
-                    <p class="achievement-details">Восстанавливаем геометрию кузова, устраняем вмятины, ржавчину и повреждения.</p>
-                    <p class="achievement-details">Работаем с легковыми авто и коммерческим транспортом.</p>
-                    <p class="achievement-details">Используем современные технологии рихтовки и восстановления.</p>
-                </div>
-            </div>
-            <div class="achievement-block right-block">
-                <div class="achievement-text">
-                    <p class="achievement-title">Профессиональная покраска</p>
-                    <p class="achievement-details">Используем качественные материалы и технологии окрашивания.</p>
-                    <p class="achievement-details">Полное и частичное окрашивание, подбор цвета по VIN-коду.</p>
-                    <p class="achievement-details">Гарантия стойкости покрытия и защиты от коррозии.</p>
-                </div>
-                <img src="icons/cars/img2.png" alt="Фото 2" class="achievement-image-right">
-            </div>
-        </div>
-        <div class="achievement-row">
-            <div class="achievement-block left-block">
-                <img src="icons/cars/img3.png" alt="Фото 3" class="achievement-image-left">
-                <div class="achievement-text">
-                    <p class="achievement-title">Полировка и восстановление ЛКП</p>
-                    <p class="achievement-details">Удаление царапин, матовости и потертостей.</p>
-                    <p class="achievement-details">Керамическое покрытие для защиты лакокрасочного слоя.</p>
-                    <p class="achievement-details">Детейлинг и обработка кузова защитными составами.</p>
-                </div>
-            </div>
-            <div class="achievement-block right-block">
-                <div class="achievement-text">
-                    <p class="achievement-title">Шумоизоляция и антикор</p>
-                    <p class="achievement-details">Защищаем авто от ржавчины и продлеваем срок службы кузова.</p>
-                    <p class="achievement-details">Полная или частичная шумоизоляция для комфортной езды.</p>
-                    <p class="achievement-details">Используем материалы премиум-класса.</p>
-                </div>
-                <img src="icons/cars/img4.png" alt="Фото 4" class="achievement-image-right">
-            </div>
-        </div>
-        <div class="achievement-row">
-            <div class="achievement-block left-block">
-                <img src="icons/cars/img5.png" alt="Фото 5" class="achievement-image-left">
-                <div class="achievement-text">
-                    <p class="achievement-title">Доставка авто из США</p>
-                    <p class="achievement-details">Полный цикл покупки, доставки и оформления автомобилей.</p>
-                    <p class="achievement-details">Проверка авто перед покупкой, подбор оптимального варианта.</p>
-                    <p class="achievement-details">Растаможка, сертификация и постановка на учет.</p>
-                </div>
-            </div>
-            <div class="achievement-block right-block">
-                <div class="achievement-text">
-                    <p class="achievement-title">Ремонт после ДТП</p>
-                    <p class="achievement-details">Комплексное восстановление автомобиля после аварий.</p>
-                    <p class="achievement-details">Замена стекол, бамперов, фар и кузовных элементов.</p>
-                    <p class="achievement-details">Согласование ремонта со страховыми компаниями.</p>
-                </div>
-                <img src="icons/cars/img6.png" alt="Фото 6" class="achievement-image-right">
-            </div>
-        </div>
-    </div>
-</section>
+
+<div id="success-message" class="success-message">Отправлено!</div>
+
 
 <section id="skills">
     <h2 class="section-title">Главные достижения</h2>
@@ -256,73 +190,136 @@
         </div>
     </div>
 
-    <!-- Новый блок с каруселью -->
+    <!-- карусель -->
     <div class="carousel-container">
         <h2 class="carousel-title">Наши работы</h2>
         <div class="carousel-track">
             <div class="carousel-item">
-                <img src="images/home-1 копия.jpg" alt="Процесс ремонта">
+                <img src="images/skills/1.jpg" alt="Процесс ремонта">
                 <p>Восстановление автомобиля после ДТП</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-2 копия.jpg" alt="Работа мастеров">
+                <img src="images/skills/2.jpg" alt="Работа мастеров">
                 <p>Наши специалисты за работой</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-3 копия.jpg" alt="Готовый результат">
+                <img src="images/skills/3.jpg" alt="Готовый результат">
                 <p>Отремонтированный автомобиль</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-4 копия.jpg" alt="Сервис">
+                <img src="images/skills/4.jpg" alt="Сервис">
                 <p>Сервисное обслуживание клиентов</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-1 копия.jpg" alt="Процесс ремонта">
+                <img src="images/skills/5.jpg" alt="Процесс ремонта">
                 <p>Восстановление автомобиля после ДТП</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-2 копия.jpg" alt="Работа мастеров">
-                <p>Наши специалисты за работой</p>
-            </div>
-            <div class="carousel-item">
-                <img src="images/home-3 копия.jpg" alt="Готовый результат">
-                <p>Отремонтированный автомобиль</p>
-            </div>
-            <div class="carousel-item">
-                <img src="images/home-4 копия.jpg" alt="Сервис">
-                <p>Сервисное обслуживание клиентов</p>
-            </div>
-            <div class="carousel-item">
-                <img src="images/home-1 копия.jpg" alt="Процесс ремонта">
+                <img src="images/skills/1.jpg" alt="Процесс ремонта">
                 <p>Восстановление автомобиля после ДТП</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-2 копия.jpg" alt="Работа мастеров">
+                <img src="images/skills/2.jpg" alt="Работа мастеров">
                 <p>Наши специалисты за работой</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-3 копия.jpg" alt="Готовый результат">
+                <img src="images/skills/3.jpg" alt="Готовый результат">
                 <p>Отремонтированный автомобиль</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-4 копия.jpg" alt="Сервис">
+                <img src="images/skills/4.jpg" alt="Сервис">
                 <p>Сервисное обслуживание клиентов</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-1 копия.jpg" alt="Процесс ремонта">
+                <img src="images/skills/5.jpg" alt="Процесс ремонта">
                 <p>Восстановление автомобиля после ДТП</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-2 копия.jpg" alt="Работа мастеров">
+                <img src="images/skills/1.jpg" alt="Процесс ремонта">
+                <p>Восстановление автомобиля после ДТП</p>
+            </div>
+            <div class="carousel-item">
+                <img src="images/skills/2.jpg" alt="Работа мастеров">
                 <p>Наши специалисты за работой</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-3 копия.jpg" alt="Готовый результат">
+                <img src="images/skills/3.jpg" alt="Готовый результат">
                 <p>Отремонтированный автомобиль</p>
             </div>
             <div class="carousel-item">
-                <img src="images/home-4 копия.jpg" alt="Сервис">
+                <img src="images/skills/4.jpg" alt="Сервис">
                 <p>Сервисное обслуживание клиентов</p>
+            </div>
+            <div class="carousel-item">
+                <img src="images/skills/5.jpg" alt="Процесс ремонта">
+                <p>Восстановление автомобиля после ДТП</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="achievements" class="achievements-container">
+    <h2 class="achievements-title">Что мы умеем</h2>
+    <div class="achievements-content">
+        <div class="achievement-row">
+            <div class="achievement-block left-block">
+                <img src="images/achievements/1.png" alt="Фото 1" class="achievement-image-left">
+                <div class="achievement-text">
+                    <p class="achievement-title">Кузовной ремонт любой сложности</p>
+                    <p class="achievement-details">Восстанавливаем геометрию кузова, устраняем вмятины, ржавчину и
+                        повреждения.</p>
+                    <p class="achievement-details">Работаем с легковыми авто и коммерческим транспортом.</p>
+                    <p class="achievement-details">Используем современные технологии рихтовки и восстановления.</p>
+                </div>
+            </div>
+            <div class="achievement-block right-block">
+                <div class="achievement-text">
+                    <p class="achievement-title">Профессиональная покраска</p>
+                    <p class="achievement-details">Используем качественные материалы и технологии окрашивания.</p>
+                    <p class="achievement-details">Полное и частичное окрашивание, подбор цвета по VIN-коду.</p>
+                    <p class="achievement-details">Гарантия стойкости покрытия и защиты от коррозии.</p>
+                </div>
+                <img src="images/achievements/2.png" alt="Фото 2" class="achievement-image-right">
+            </div>
+        </div>
+        <div class="achievement-row">
+            <div class="achievement-block left-block">
+                <img src="images/achievements/3.png" alt="Фото 3" class="achievement-image-left">
+                <div class="achievement-text">
+                    <p class="achievement-title">Полировка и восстановление ЛКП</p>
+                    <p class="achievement-details">Удаление царапин, матовости и потертостей.</p>
+                    <p class="achievement-details">Керамическое покрытие для защиты лакокрасочного слоя.</p>
+                    <p class="achievement-details">Детейлинг и обработка кузова защитными составами.</p>
+                </div>
+            </div>
+            <div class="achievement-block right-block">
+                <div class="achievement-text">
+                    <p class="achievement-title">Шумоизоляция и антикор</p>
+                    <p class="achievement-details">Защищаем авто от ржавчины и продлеваем срок службы кузова.</p>
+                    <p class="achievement-details">Полная или частичная шумоизоляция для комфортной езды.</p>
+                    <p class="achievement-details">Используем материалы премиум-класса.</p>
+                </div>
+                <img src="images/achievements/4.png" alt="Фото 4" class="achievement-image-right">
+            </div>
+        </div>
+        <div class="achievement-row">
+            <div class="achievement-block left-block">
+                <img src="images/achievements/5.png" alt="Фото 5" class="achievement-image-left">
+                <div class="achievement-text">
+                    <p class="achievement-title">Доставка авто из США</p>
+                    <p class="achievement-details">Полный цикл покупки, доставки и оформления автомобилей.</p>
+                    <p class="achievement-details">Проверка авто перед покупкой, подбор оптимального варианта.</p>
+                    <p class="achievement-details">Растаможка, сертификация и постановка на учет.</p>
+                </div>
+            </div>
+            <div class="achievement-block right-block">
+                <div class="achievement-text">
+                    <p class="achievement-title">Ремонт после ДТП</p>
+                    <p class="achievement-details">Комплексное восстановление автомобиля после аварий.</p>
+                    <p class="achievement-details">Замена стекол, бамперов, фар и кузовных элементов.</p>
+                    <p class="achievement-details">Согласование ремонта со страховыми компаниями.</p>
+                </div>
+                <img src="images/achievements/6.png" alt="Фото 6" class="achievement-image-right">
             </div>
         </div>
     </div>
@@ -339,20 +336,20 @@
         <div class="contacts-right">
             <div class="contact-info">
                 <h3>Где мы находимся</h3>
-                <p>г. Минск, ул. Примерная, 10</p>
+                <p>г. Гомель, ул. Улуковский сельсовет, 30</p>
                 <br>
                 <h3>Телефон</h3>
                 <p>
-                    <a href="tel:+375333333333" class="phone-link">+375(33) 333-33-33</a>
+                    <a href="tel:+375291441400" class="phone-link">+375(29) 144-14-00</a>
                 </p>
                 <br>
                 <h3>Время работы</h3>
                 <p>Будни, с 8:00 до 18:00</p>
             </div>
             <form id="contact-form" class="contact-form">
-                <input type="text" name="name" placeholder="Ваше имя" required>
-                <input type="tel" name="email" placeholder="Ваш телефон" required>
-                <button type="submit">Оставить заявку</button>
+                <input id="name1" type="text" name="name" placeholder="Ваше имя" required>
+                <input id="phone1" type="tel" name="phone" placeholder="Ваш телефон" required>
+                <button>Перезвонить</button>
             </form>
         </div>
     </div>

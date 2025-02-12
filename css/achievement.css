@@ -63,7 +63,7 @@
     background-color: #212121;
 }
 
-/* Улучшенная адаптация изображений */
+/* адаптация изображений */
 .achievement-image-left, .achievement-image-right {
     width: 150px;
     height: auto;
@@ -91,7 +91,7 @@
 
 .achievement-details {
     font-size: 14px;
-    color: #aaaaaa;
+    color: #bbbbbb;
 }
 
 /* Адаптация для планшетов */
@@ -100,8 +100,6 @@
         width: 70%;
     }
     .achievement-image-left, .achievement-image-right {
-        /*width: 120px;*/
-        /*max-height: 120px;*/
         display: none;
     }
 }
@@ -128,8 +126,6 @@
     }
 
     .achievement-image-left, .achievement-image-right {
-        /*width: 100px; !* Немного уменьшаем размер на мобильных *!*/
-        /*max-height: 100px;*/
         display: none;
     }
 }
