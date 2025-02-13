@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
             target.scrollIntoView({behavior: "smooth"});
         });
     });
-
-
 });
 
 // анимация переходов между разделами
@@ -37,3 +35,19 @@ document.addEventListener('click', function (event) {
         menu.classList.remove('show');
     }
 });
+
+// координаты места на карте и маркер
+function initMap() {
+    const mark = [52.398347, 31.143782];
+    var map = new ymaps.Map("map", {
+        center: mark, // Координаты
+        zoom: 13
+    });
+    // Маркер автосервиса
+    var autoServicePlacemark = new ymaps.Placemark(mark, {
+        balloonContent: "<strong>Автоферма</strong><br>ул. Улуковский сельсовет, 30"
+    }, {
+        preset: "islands#redAutoIcon"
+    });
+    map.geoObjects.add(autoServicePlacemark);
+}

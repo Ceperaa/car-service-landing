@@ -1,33 +1,24 @@
-
-
-.form-popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 20%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.73);
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(196, 196, 196, 0.3);
-    z-index: 2000;
+#achievements, #contacts {
+    text-align: center;
 }
 
-.form-popup input, .form-popup textarea {
-    width: 100%;
-    margin-bottom: 10px;
-    border: 0px solid rgba(44, 44, 44, 0.5);
-    background: rgba(159, 159, 159, 0.5);
-    padding: 20px;
-    color: #ffffff;
+#home h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 
-.form-popup button {
+#home button {
     padding: 10px 20px;
-    border: none;
+    font-size: 18px;
     background: #e63946;
+    border: none;
     color: white;
     cursor: pointer;
+    transition: background 0.3s;
+}
+
+#home button:hover {
+    background: #652b2b;
 }
 
 #achievements, #contacts {
@@ -37,22 +28,27 @@
 footer {
     text-align: center;
     padding: 10px;
-    background: #f1f1f1;
+    color: #f1f1f1;
+    background: #464646;
 }
 
 @media (max-width: 768px) {
-
     #home h1 {
         font-size: 30px;
     }
 
     #home button {
         font-size: 16px;
+        border-radius: 10px;
     }
-
 }
 
 @media (max-width: 480px) {
+
+    .skill-item {
+        width: 200px;
+        padding: 15px;
+    }
 
     #home h1 {
         font-size: 24px;
@@ -60,10 +56,5 @@ footer {
 
     #home button {
         font-size: 14px;
-    }
-
-    .skill-item {
-        width: 200px;
-        padding: 15px;
     }
 }
