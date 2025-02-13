@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Автоферма – Кузовной ремонт, покраска и восстановление авто в Гомеле</title>
-    <meta name="description" content="Автоферма – профессиональный кузовной ремонт, покраска авто, восстановление после ДТП в Гомеле. Работаем 11+ лет!">
-    <meta name="keywords" content="кузовной ремонт Гомель, покраска авто Гомель, восстановление после ДТП, автоферма, автосервис Гомель">
+    <meta name="description" content="Автоферма - профессиональный кузовной ремонт и покраска автомобилей в Гомеле. Качественные услуги по восстановлению авто после ДТП.">
+    <meta name="keywords" content="автосервис Гомель, кузовной ремонт Гомель, покраска авто, восстановление после ДТП">
+    <meta name="author" content="Автоферма">
+    <meta property="og:title" content="Автоферма - Кузовной ремонт в Гомеле">
+    <meta property="og:description" content="Профессиональный кузовной ремонт и покраска автомобилей. Восстановление авто после ДТП.">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:url" content="https://autoferma.by">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>Автоферма - Кузовной ремонт и покраска авто в Гомеле</title>
+    <link rel="canonical" href="https://autoferma.by">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Автоферма</title>
@@ -74,20 +82,60 @@
             text-align: center;
             color: white;
         }
+        .home-content {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            text-align: left;
+            max-width: 600px;
+            color: #ffffff;
+            position: absolute;
+            left: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
 
         #home h1 {
-            font-size: 50px;
+            font-size: 48px;
+            color: #ffffff;
             margin-bottom: 20px;
         }
 
-        #home button {
-            padding: 10px 20px;
+        #home p {
+            font-size: 22px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            color: #d3a5a5;
+        }
+
+
+        .home-services {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .home-services li {
             font-size: 18px;
+            padding: 5px 0;
+            color: #d7d7d7;
+            font-weight: bold;
+        }
+
+        #home button {
+            padding: 15px 25px;
+            font-size: 20px;
             background: #e63946;
             border: none;
             color: white;
             cursor: pointer;
             transition: background 0.3s;
+
+        }
+
+
+        #home h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
         }
 
         #home button:hover {
@@ -107,30 +155,59 @@
 
         @media (max-width: 768px) {
 
-            #home h1 {
-                font-size: 30px;
-            }
-
             #home button {
                 font-size: 16px;
                 border-radius: 10px;
+            }
+            .home-content {
+                padding: 20px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 10px;
+                max-width: 90%;
+            }
+
+            #home h1 {
+                font-size: 36px;
+            }
+
+            #home p {
+                font-size: 18px;
+            }
+
+            .home-services li {
+                font-size: 18px;
             }
 
         }
 
         @media (max-width: 480px) {
+            .home-content {
+                padding: 20px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                border-radius: 10px;
+                max-width: 100%;
+            }
 
             #home h1 {
-                font-size: 24px;
+                font-size: 17px;
+            }
+
+            #home p {
+                font-size: 11px;
+            }
+
+            .home-services li {
+                text-align: left;
+                font-size: 9px;
+                padding: 0px 0;
             }
 
             #home button {
-                font-size: 14px;
-            }
-
-            .skill-item {
-                width: 200px;
-                padding: 15px;
+                font-size: 11px;
+                padding: 12px 15px;
             }
 
         }
@@ -149,11 +226,18 @@
         </ul>
     </nav>
 </header>
-
+профессиональный кузовной ремонт и покраска автомобилей в Гомеле
 <section id="home">
-    <div>
+    <div class="home-content">
         <h1>Автоферма</h1>
-        <button id="order-btn">Оставь заявку</button>
+        <p>Профессиональный кузовной ремонт и покраска автомобилей в Гомеле.<br> <strong>Качество и надежность</strong> — наш приоритет!</p>
+        <ul class="home-services">
+            <li>&#9881; Кузовной ремонт любой сложности</li>
+            <li>&#9881; Ремонт после ДТП</li>
+            <li>&#9881; Доставка авто из СШАв</li>
+            <li>&#9881; Полировка и восстановление ЛКП</li>
+        </ul>
+        <button id="order-btn">Оставить заявку</button>
     </div>
 </section>
 
