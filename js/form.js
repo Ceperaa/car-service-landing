@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(".form-popup");
     const successMessage = document.getElementById("success-message");
@@ -12,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         form.style.display = "none";
     });
 
-    // Функция показа уведомления
+    // Функция показа уведомления "Отправлено"
     function showSuccessMessage() {
         successMessage.style.display = "block";
         setTimeout(() => {

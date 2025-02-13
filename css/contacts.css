@@ -2,7 +2,6 @@
     background-color: rgba(0, 0, 0, 0.42);
     padding: 50px 0;
     text-align: center;
-
 }
 
 .contacts-title {
@@ -125,31 +124,6 @@
         font-size: 1rem;
     }
 }
-
-
-/*@media (max-width: 768px) {*/
-/*    .contacts-content {*/
-/*        flex-direction: column;*/
-/*        align-items: center;*/
-/*        border-radius: 10px;*/
-/*    }*/
-/*    .contact-info {*/
-/*        border-radius: 10px;*/
-/*    }*/
-/*    .map-container {*/
-/*        border-radius: 10px;*/
-/*    }*/
-/*    .contact-form input {*/
-/*        border-radius: 10px;*/
-/*    }*/
-/*    .contact-form button {*/
-/*        border-radius: 10px;*/
-/*    }*/
-/*    !* На мобильных устройствах номер остается кликабельным *!*/
-/*    .phone-link {*/
-/*        font-size: 1.1rem;*/
-/*    }*/
-/*}*/
 
 @media (max-width: 768px) {
     .contacts-content {
